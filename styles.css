@@ -1,0 +1,50 @@
+/* Cream White = #f7f4eb, Ice Blue = #e0f7fa */
+
+.bg-cream {
+  background-color: #f7f4eb !important;
+}
+.bg-ice-blue {
+  background-color: #e0f7fa !important;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f7f4eb;
+  margin: 0; padding: 0;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+.app-subtitle {
+  color: #555;
+}
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.ice-blue {
+  background-color: #e0f7fa !important;
+  border-bottom: none;
+}
+
+.card-input { height: 100%; }
+.card-output { min-height: 300px; }
+
+.output-area { min-height: 220px; }
+
+.summary-output {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1rem;
+  font-family: Consolas, monospace;
+  line-height: 1.4;
+}
+
+footer.bg-ice-blue {
+  background-color: #e0f7fa !important;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summarize AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css"
+        integrity="sha384-LtrjvnR4/Jqs4nE"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+  <header class="bg-cream text-center py-4 mb-4">
+    <h1 class="app-title">AI Summarizer</h1>
+    <p class="app-subtitle mb-0">
+      Enter your text, choose summary length, and get a concise result.
+    </p>
+  </header>
+
+  <div class="container-fluid px-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-6 text-center">
+        <label for="lengthRange" class="mr-2">Summary Length:</label>
+        <input type="range" min="1" max="3" step="1" value="2"
+               class="custom-range w-25 d-inline-block" id="lengthRange">
+        <span id="lengthLabel" class="ml-2">Medium</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-5 mb-4">
+        <div class="card shadow card-input">
+          <div class="card-header ice-blue text-white">
+            <strong>Enter or Paste Text</strong>
+          </div>
+          <div class="card-body">
+            <form id="summarizeForm" method="POST" action="/generate">
+              <input type="hidden" name="length" id="lengthInput" value="2">
+              <div class="form-group">
+                <textarea class="form-control" name="user_text" id="user_text" rows="6"
+                          placeholder="Type or paste text here..."></textarea>
+              </div>
+              <div class="text-right">
+                <button type="submit" class="btn btn-info">Summarize</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card shadow card-output">
+          <div class="card-body output-area">
+            {% if summarized_text %}
+              <h4 class="text-info mb-3">
+                Summarized ({{ summary_word_count }} words)
+                from ({{ input_word_count }} words)
+              </h4>
+              <pre class="summary-output">{{ summarized_text }}</pre>
+            {% else %}
+              <p class="text-muted text-center">
+                Your summarized text will appear here after submission.
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ice-blue text-white py-3 mt-5 text-center">
+    <small>&copy; 2025 Summarize AI. All rights reserved.</small>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+          integrity="sha384-DfXdz2h…kOJ8I+b1Q=="
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-LtrjvnR4/Jqs4nE"
+          crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+</body>
+</html>
